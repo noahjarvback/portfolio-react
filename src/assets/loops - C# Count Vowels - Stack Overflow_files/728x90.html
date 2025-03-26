@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://dco-assets.everestads.net/ics-campaign//5031/t/10741/2/728x90.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Ad</title>
+    <link rel="stylesheet" href="./style.min.css">
+    <script type="text/javascript" src="./AMOLibrary.js.nedladdning"></script>
+    <script src="./script.min.js.nedladdning" charset="utf-8"></script>
+    <style media="screen">
+      @font-face {
+          font-family: SegoePro-Semibold;
+          src: url('fonts/SegoePro-Semibold.woff') format("woff");
+      }
+      .segoeProSemibold { font-family: SegoePro-Semibold; }
+    </style>
+    <!--
+      Available Classes:-
+        For Images :-
+          .asset        -Image Center Align(Image can shrink according to the container but will expand beyond its original size)
+          .asset-top    -Image Top Center Align(Image can shrink according to the container but will expand beyond its original size)
+          .asset-left
+
+    -->
+    <style media="screen">
+      #ad {
+        width: 720px;
+        height: 90px;
+        font-family: Arial,Helvetica,sans-serif;
+        background-color: #fff;
+      }
+      #cta { background-color: #0078d4; }
+      #cta:hover { background-color: #1384da; }
+    </style>
+  </head>
+  <body>
+    <div class="ad" id="ad"><div id="backgroundImage" class="asset" style="width:inherit; height:inherit;"><img src="./035daa5d08267184539a888319484f6b.png"></div><div id="textfields" dir="auto" class="text-left segoeProSemibold" style="top: 0px; left: 176px; width: 280px; height: 90px; font-size: 17px; line-height: 1.2; color: rgb(0, 0, 0); letter-spacing: -0.2px;"><span><font id="headlineText" style="display: inline-block; min-height: 24px; padding-bottom: 5px; width: 100%;">Uppfyll verksamhetens behov genom snabb skalning</font><font id="subheadlineText" style="display: inline-block; font-size: 80%;">Avbryt när som helst.</font></span></div><div id="cta" dir="auto" class="text segoeProSemibold" data-style="text-align:center;padding:3px 20px;" style="top: 0px; left: 690px; width: 30px; height: 90px; font-size: 0px; color: rgb(255, 255, 255); display: none;"><span style="text-align:center;padding:3px 20px;">Testa Azure&nbsp;❯</span></div><div id="ctaArrow" class="text segoeProSemibold" style="top: 45px; left: 700px; font-size: 20px; color: rgb(255, 255, 255); display: none;"><span>❯</span></div><div id="overlay" style="top: 0px; left: 0px; width: inherit; height: inherit; background-color: rgb(255, 255, 255); opacity: 0; transition: 0.5s; visibility: hidden;"></div><div class="ad-borders"><div class="ad-border-top" style="position:absolute;display:inline-block;width:720px;border-top:2px solid #d1d1d1;top:0px;left:0px;"></div><div class="ad-border-right" style="position:absolute;display:inline-block;height:90px;border-left:2px solid #d1d1d1;top:0px;left:718px;"></div><div class="ad-border-bottom" style="position:absolute;display:inline-block;width:720px;border-top:2px solid #d1d1d1;top:88px;left:0px;"></div><div class="ad-border-left" style="position:absolute;display:inline-block;height:90px;border-left:2px solid #d1d1d1;top:0px;left:0px;"></div></div></div>
+    <div id="loadFont" style="width:0;height:0;overflow:hidden;">
+      <div class="segoeProSemibold" style="color:transparent;">segoeProSemibold</div>
+    </div>
+    <script type="text/javascript">
+      var ad = new Ad({
+        root: document.querySelector('#ad'),
+        width: 728,
+        height: 90,
+        borderWidth: 2,
+        borderColor: '#d1d1d1'
+      });
+      setTimeout(function() {
+        ad.contentSetup({
+          cam: {
+            //headlineText: 'Ready when you are—let’s set up your free account',
+            headlineText: 'Why Azure?',
+            layout: 'TPV7',
+            //subheadlineText:  'Start building apps today with 25+ free services and a $200 credit',
+            subheadlineText: 'Start building apps today with 25+ free services and a $200 credit',
+            backgroundImage: 'assets/FreeAccount_728x90.png',
+            //backgroundImage: 'assets/728x90_Free Account_UI_EndFr.png',
+            ctaText: 'Try Azure free',
+            clickURL: 'https://azure.microsoft.com/',
+            impressionTracker: 'images/1x1.png'
+          },
+          feed: [
+            {
+              name: 'ms'
+            }
+          ],
+          staticData: {
+            // ref:'ref.png',
+          },
+          beforeLoad: function(data){
+            var replaceMacro = function(text, data) {
+              var macros = text.match(/\!\{(.*?)\}/g);
+              if(macros) {
+                macros.forEach(function(macro){
+                  var macroText = macro.split('!{').join('').split('}').join('');
+                  for(var key in data) { if(key == macroText) { macroText = data[key]; } }
+                  text = text.split(macro).join(macroText);
+                });
+              }
+              return text;
+            }
+            data.map(function(content){
+              content.ctaText +='&nbsp;&#x276F;';
+              if(content.headlineText.split('|').length > 1) {
+                  var fontSize = content.headlineText.split('|')[1];
+                  content.headlineText = content.headlineText.split('|')[0];
+                  if(fontSize) ad.root.querySelector('#headlineText').style.fontSize = fontSize + 'px';
+              }
+              if(content.subheadlineText.split('|').length > 1) {
+                  var fontSize = content.subheadlineText.split('|')[1];
+                  content.subheadlineText = content.subheadlineText.split('|')[0];
+                  if(fontSize) ad.root.querySelector('#subheadlineText').style.fontSize = fontSize + 'px';
+              }
+              if(content.headlineText.toLowerCase() === 'na') {
+                ad.root.querySelector('#headlineText').style.display = 'none';
+              }
+              if(content.subheadlineText.toLowerCase() === 'na') {
+                ad.root.querySelector('#subheadlineText').style.display = 'none';
+              }
+              if(content.layout.toLowerCase() === 'tpv4') {
+                ad.root.querySelector('#cta').style.whiteSpace = 'nowrap';
+              } else {
+                ad.root.querySelector('#textfields').style.fontSize = '17px';
+                ad.root.querySelector('#textfields').style.letterSpacing = '-0.2px';
+                ad.root.querySelector('#cta').style.display = 'none';
+                ad.root.querySelector('#ctaArrow').style.display = 'none';
+                ad.root.querySelector('#textfields #headlineText').style.minHeight = '24px';
+                ad.root.querySelector('#textfields #headlineText').style.paddingBottom = '5px';
+                ad.root.querySelector('#textfields #subheadlineText').style.fontSize = '80%';
+              }
+            });
+            return data;
+          }
+        }, function(data){
+          var adData = data[0], adClickUrl = adData['clickURL'];
+          ad.root.addEventListener("click", function(e) {
+            if('button' in e.target.dataset) { } else { amo.onDynAdClick(adData.feedData, "CLICK", adClickUrl); }
+          });
+          if(adData.impressionTracker.toLowerCase() != 'na'){
+            var impressionTracker = adData.impressionTracker.split('^')[0];
+            var isn = 'data' in amo && 'isn' in amo.data ? amo.data.isn : '';
+            var trackingCode = 'data' in amo && 'data' in amo.data && 'atsParams' in amo.data.data && 'x2_tracking_code_5' in amo.data.data.atsParams ? amo.data.data.atsParams.x2_tracking_code_5 : '';
+            if(isn.length) { impressionTracker = impressionTracker.replace('(t_td_isn)', isn); }
+            if(trackingCode.length){ impressionTracker = impressionTracker.replace('$(t_qp_TC_5)', trackingCode); }
+            ad.loadAssets(impressionTracker, function(assets){ });
+          }
+          if(adData.impressionTracker.indexOf('^') != -1){
+            var impressionTrackerAAM = adData.impressionTracker.split('^')[1];
+            var isn = 'data' in amo && 'isn' in amo.data ? amo.data.isn : '';
+            var trackingCode = 'data' in amo && 'data' in amo.data && 'atsParams' in amo.data.data && 'x2_tracking_code_5' in amo.data.data.atsParams ? amo.data.data.atsParams.x2_tracking_code_5 : '';
+            if(isn.length) { impressionTrackerAAM = impressionTrackerAAM.replace('(t_td_isn)', isn); }
+            if(trackingCode.length){ impressionTrackerAAM = impressionTrackerAAM.replace('$(t_qp_TC_5)', trackingCode); }
+            ad.loadAssets(impressionTrackerAAM, function(assets){ });
+          }
+          if(adData.layout.toLowerCase() === 'tpv4') {
+            ad.layers.cta.style.webkitTransform = '';
+            ad.layers.cta.style.transform = '';
+          }
+          if(adData.layout.toLowerCase() === 'tpv7') {
+            if(adData['subheadlineText'].toLowerCase() == 'na' || adData['subheadlineText'].toLowerCase() == '&#32;') {
+              ad.layers.textfields.querySelector('span font:nth-child(2)').style.visibility = 'hide';
+              ad.layers.textfields.style.top = ((ad.layers.textfields.querySelector('span').offsetHeight - ad.layers.textfields.querySelector('font').offsetHeight)/2) + 'px';
+            }
+          }
+        });
+      }, 100);
+    </script>
+  
+
+</body></html>
